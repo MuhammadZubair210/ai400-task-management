@@ -1,7 +1,7 @@
 from fastapi import APIRouter, Depends, HTTPException, Query
 from sqlmodel import Session, select
 from typing import List
-from datetime import datetime
+from datetime import datetime, timezone
 
 from app.models import Task, TaskCreate, TaskUpdate, TaskRead, TaskStatus, TaskPriority
 from app.database import get_session
@@ -65,7 +65,7 @@ def update_task(
     for key, value in task_data.items():
         setattr(db_task, key, value)
 
-    db_task.updated_at = datetime.utcnow()
+    db_task.updated_at = datetime.now(timezone.utc)
     session.add(db_task)
     session.commit()
     session.refresh(db_task)

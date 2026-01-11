@@ -4,6 +4,7 @@ from contextlib import asynccontextmanager
 
 from app.database import create_db_and_tables
 from app.api import tasks_router
+from app.config import settings
 
 
 @asynccontextmanager
@@ -21,10 +22,10 @@ app = FastAPI(
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
-    allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=["*"],
+    allow_origins=settings.cors_origins,
+    allow_credentials=settings.cors_allow_credentials,
+    allow_methods=settings.cors_allow_methods,
+    allow_headers=settings.cors_allow_headers,
 )
 
 app.include_router(tasks_router)
