@@ -1,5 +1,7 @@
 # AI-400 Task Management API + Skills Development
 
+**Demo Video**: [Watch on Loom](https://www.loom.com/share/481ff700f9674e48b77f3232075955be)
+
 A comprehensive Task Management API built with FastAPI, SQLModel, and SQLite, featuring reusable AI agent skills for workflow automation.
 
 ## Project Overview
